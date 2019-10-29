@@ -1,0 +1,5 @@
+*.DS_Store
+bin
+target
+src/main/webapp/META-INF
+.settings

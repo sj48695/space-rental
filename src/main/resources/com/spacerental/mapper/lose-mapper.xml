@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spacerental.mapper.LoseMapper">
+
+<!--	<select id="selectLose">
+		SELECT <include refid="loseBasicColumns" /> FROM LOSE 
+	</select>
+	
+	<select id="selectLoseFile">
+		SELECT <include refid="loseFileBasicColumns" /> FROM LOSEFILE
+	</select> -->
+	
+	<insert id="registerlose" parameterType="Lose">
+		<selectKey keyColumn="loseNo" keyProperty="loseNo" order="AFTER" resultType="int">
+			SELECT LOSE_SEQUENCE.CURRVAL FROM DUAL 
+		</selectKey>
+		INSERT INTO LOSE(LOSENO, TITLE, CONTENT, LOSEDATE, hostNo, TYPE, UPLOADER)
+		VALUES ( LOSE_SEQUENCE.NEXTVAL , #{ title }, #{ content }, #{ loseDate }, #{ hostNo }, #{ type }, #{ uploader })
+	</insert>
+	
+	<insert id="registerloseFile" parameterType="LoseFile">
+		INSERT INTO LOSEFILE(loseFileNo, savedFileName, loseNo, userfileName)
+		VALUES ( LOSEFILE_SEQUENCE.NEXTVAL, #{ savedFileName }, #{ loseNo }, #{ userFileName })
+	</insert>
+	
+	<!-- <select id="findList" resultType="Lose">
+		SELECT loseNo, title, content, loseDate, hostNo, type, uploader
+		FROM LOSE 
+		WHERE TYPE= #{  }
+        ORDER BY loseNo ASC
+	</select> -->
+	
+	<select id="loseList" resultType="Lose" parameterType="String">
+		SELECT loseNo, title, content, loseDate, hostNo, type, uploader
+		FROM LOSE 
+		WHERE TYPE= #{ type }
+        ORDER BY loseNo ASC
+	</select>
+	
+ 	<select id="selectLoseByLoseNo" parameterType="int" resultType="Lose">
+		SELECT LOSENO, TITLE, CONTENT, LOSEDATE, hostNo, TYPE, UPLOADER
+		FROM LOSE
+        where loseNo = #{ loseNo }
+	</select>
+	
+	<select id="selectLoseFilesByLoseNo" parameterType="int" resultType="LoseFile">
+		SELECT loseFileNo, savedFileName, loseNo, userfileName
+		FROM LOSEFILE
+        where loseNo = #{ loseNo }
+	</select>
+	
+	<update id="updateLoseUpdate" parameterType="Lose">
+	UPDATE LOSE
+	SET title =#{title}, content=#{content}
+	WHERE loseNo = #{loseNo}	
+	</update>
+	
+	<delete id="loseDelete" parameterType="int">
+		DELETE FROM LOSE
+		WHERE loseNo = #{ loseNo }
+	</delete>
+	
+	<delete id="loseFileDelete" parameterType="int">
+		DELETE FROM LOSEFILE
+		WHERE loseNo = #{ loseNo }
+	</delete>
+	
+	<select id="loseDetail" parameterType="int" resultType="Lose">
+		SELECT loseNo, title, content
+		FROM NOTICE
+		WHERE loseNo = #{ loseNo }
+	</select>
+
+	<select id="searchlosslist" parameterType="String" resultType="Lose">
+		SELECT loseNo, title, content, loseDate, hostNo, type, uploader
+		FROM LOSE 
+        where  title LIKE '%'||#{ value }||'%' and type LIKE'습득물'
+        ORDER BY loseNo DESC
+	</select>
+
+</mapper>
