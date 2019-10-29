@@ -21,7 +21,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.spacerental.controller" />
+	<context:component-scan base-package="com.spacerental.controller" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 	
 	<beans:bean id="authInterceptor" class="com.spacerental.interceptor.AuthInterceptor" />
 				
