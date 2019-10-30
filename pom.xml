@@ -13,6 +13,8 @@
 		<org.springframework-version>4.3.24.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.9.4</org.aspectj-version>
 		<org.slf4j-version>1.7.26</org.slf4j-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 	<dependencies>	
 		<!-- Spring -->
@@ -207,7 +209,6 @@
                     <compilerArgument>-Xlint:all</compilerArgument>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
-                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
