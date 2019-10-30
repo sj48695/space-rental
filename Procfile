@@ -1,1 +1,1 @@
-web: java -jar target/ROOT.jar
+web: java -jar target/dependency/webapp-runner.jar target/ROOT.war
