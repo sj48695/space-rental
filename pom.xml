@@ -13,35 +13,8 @@
 		<org.springframework-version>4.3.24.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.9.4</org.aspectj-version>
 		<org.slf4j-version>1.7.26</org.slf4j-version>
-		<tomcat.version>8.5.23</tomcat.version>
 	</properties>
-	<dependencies>
-		<dependency>
-	        <groupId>org.apache.tomcat.embed</groupId>
-	        <artifactId>tomcat-embed-core</artifactId>
-	        <version>${tomcat.version}</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>org.apache.tomcat.embed</groupId>
-	        <artifactId>tomcat-embed-jasper</artifactId>
-	        <version>${tomcat.version}</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>org.apache.tomcat</groupId>
-	        <artifactId>tomcat-jasper</artifactId>
-	        <version>${tomcat.version}</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>org.apache.tomcat</groupId>
-	        <artifactId>tomcat-jasper-el</artifactId>
-	        <version>${tomcat.version}</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>org.apache.tomcat</groupId>
-	        <artifactId>tomcat-jsp-api</artifactId>
-	        <version>${tomcat.version}</version>
-	    </dependency>
-	
+	<dependencies>	
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -237,7 +210,7 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
-           <!--  <plugin>
+            <plugin>
 	            <groupId>org.apache.maven.plugins</groupId>
 	            <artifactId>maven-dependency-plugin</artifactId>
 	            <executions>
@@ -257,7 +230,7 @@
 	                    </configuration>
 	                </execution>
 	            </executions>
-	        </plugin> -->
+	        </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
