@@ -218,6 +218,7 @@
 	                    <phase>package</phase>
 	                    <goals><goal>copy</goal></goals>
 	                    <configuration>
+	                    	<path>/spacerental</path>
 	                        <artifactItems>
 	                            <artifactItem>
 	                                <groupId>com.github.jsimone</groupId>
