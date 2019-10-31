@@ -15,7 +15,7 @@
 		<org.slf4j-version>1.7.26</org.slf4j-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-  		<resource-encoding>UTF-8</resource-encoding>
+  		<basedir>/spacerental</basedir>
 	</properties>
 	<dependencies>	
 		<!-- Spring -->
@@ -220,7 +220,7 @@
 	                    <phase>package</phase>
 	                    <goals><goal>copy</goal></goals>
 	                    <configuration>
-	                    	<path>/spacerental</path>
+	                    	<path>${basedir}</path>
 	                        <artifactItems>
 	                            <artifactItem>
 	                                <groupId>com.github.jsimone</groupId>
@@ -241,6 +241,25 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+					<webResources>
+						<resource>
+							<filtering>true</filtering>
+							<directory>${basedir}/src/main/webapp</directory>
+							<includes>
+								<include>**/*.jsp</include>
+								<include>**/*.js</include>
+							</includes>
+						</resource>
+					</webResources>
+					<resourceEncoding>UTF-8</resourceEncoding>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
 </project>
